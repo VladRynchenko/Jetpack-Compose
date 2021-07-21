@@ -21,8 +21,8 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MyApp{
-               MyScreenContent()
+            MyApp {
+                MyScreenContent()
             }
         }
     }
@@ -45,16 +45,17 @@ fun MyApp(content: @Composable () -> Unit) {
 @Preview(showBackground = true, name = "Text Preview")
 @Composable
 fun DefaultPreview() {
-    MyApp{
+    MyApp {
         MyScreenContent()
     }
 }
 
 @Composable
-fun MyScreenContent(){
+fun MyScreenContent(names: List<String> = listOf("Android", "there")) {
     Column {
-        Greeting(name = "Android")
-        Divider(color = Color.Black)
-        Greeting(name = "there")
+        for (name in names) {
+            Greeting(name = name)
+            Divider(color = Color.Black)
+        }
     }
 }
