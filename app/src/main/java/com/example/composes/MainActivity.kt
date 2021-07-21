@@ -19,7 +19,9 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MyApp()
+            MyApp{
+                Greeting(name = "Android")
+            }
         }
     }
 }
@@ -30,10 +32,10 @@ fun Greeting(name: String) {
 }
 
 @Composable
-fun MyApp() {
+fun MyApp(content: @Composable () -> Unit) {
     ComposesTheme {
         Surface(color = Color.Yellow) {
-            Greeting("Android")
+            content()
         }
     }
 }
@@ -41,5 +43,7 @@ fun MyApp() {
 @Preview(showBackground = true, name = "Text Preview")
 @Composable
 fun DefaultPreview() {
-    MyApp()
+    MyApp{
+        Greeting(name = "Android")
+    }
 }
