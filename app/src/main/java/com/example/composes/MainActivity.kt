@@ -3,8 +3,10 @@ package com.example.composes
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.absoluteOffset
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -20,7 +22,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MyApp{
-                Greeting(name = "Android")
+               MyScreenContent()
             }
         }
     }
@@ -44,6 +46,15 @@ fun MyApp(content: @Composable () -> Unit) {
 @Composable
 fun DefaultPreview() {
     MyApp{
+        MyScreenContent()
+    }
+}
+
+@Composable
+fun MyScreenContent(){
+    Column {
         Greeting(name = "Android")
+        Divider(color = Color.Black)
+        Greeting(name = "there")
     }
 }
